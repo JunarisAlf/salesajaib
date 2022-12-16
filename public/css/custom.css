@@ -1,0 +1,15 @@
+.logo-container{
+    width: 100%;
+}
+
+.logo-img{
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.btn-primary-important{
+    background: #1F3BB3 !important;
+    color: #ffffff;
+}
