@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Daftar menjadi tim marketing kami')
+@section('title', 'Tambah admin')
 
 @section('body')
     @include('layout.alert')
@@ -15,7 +15,7 @@
                             </div>
                             <h4 class="tw-text-xl tw-font-bold">Hi!</h4>
                             <h6 class="fw-light my-2 tw-text-slate-500"> Ayo daftar dan menjadi bagian dari kami</h6>
-                            <form class="pt-3" method="post" action={{route('sales.register')}}>
+                            <form class="pt-3" method="post" action={{route('admin.register')}}>
                                 @csrf
                                 <div class="form-group">
                                     <input type="text"
@@ -44,7 +44,7 @@
                                         class="form-control form-control-lg @error('full_name') is-invalid @enderror"
                                         id="fullName" placeholder="Nama Lengkap" name="fullName" required
                                         value={{ old('fullName') }}>
-                                    @error('fullName')
+                                    @error('full_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -66,6 +66,17 @@
                                         id="confirmPassword" placeholder="Konfirmasi password" name="password_confirmation"
                                         required>
                                     @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="text"
+                                        class="form-control form-control-lg @error('full_name') is-invalid @enderror"
+                                        id="security_key" placeholder="Security Key" name="security_key" required
+                                        value={{ old('security_key') }}>
+                                    @error('security_key')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

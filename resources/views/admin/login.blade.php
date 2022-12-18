@@ -2,6 +2,7 @@
 @section('title', 'Masuk Sebagai Admin')
 
 @section('body')
+    @include('layout.alert')
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth px-0">
@@ -13,18 +14,23 @@
                             </div>
                             <h4 class="tw-text-xl tw-font-bold">Hello! let's get started</h4>
                             <h6 class="fw-light tw-text-slate-500 my-2">Sign in untuk melanjutkan!</h6>
-                            <form class="pt-3">
+                            <form class="pt-3" method="post" action={{route('admin.login')}}>
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
-                                        placeholder="Username">
+                                    <input type="text"
+                                    class="form-control form-control-lg"
+                                    id="noWa" placeholder="Nomor WA 628" name="noWa" required
+                                    value={{ old('noWa') }}>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
+                                    <input type="password" class="form-control form-control-lg" id="password" name="password"
                                         placeholder="Password">
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                        href="/admin">SIGN IN</a>
+                                    <button type="submit"
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                                        Masuk
+                                    </button>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center my-2">
                                     <div class="form-check">
@@ -38,7 +44,7 @@
                                 <div class="mb-2">
                                 </div>
                                 <div class="fw-light mt-4 text-center">
-                                    Belum memiliki akun? <a href="register.html" class="text-primary">Daftar sekarang</a>
+                                    Belum memiliki akun? <a href={{route('admin.registerView')}} class="text-primary">Daftar sekarang</a>
                                 </div>
                             </form>
                         </div>

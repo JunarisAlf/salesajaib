@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\SalesAuthController;
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,7 @@ use App\Http\Controllers\Auth\SalesAuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin/masuk', function () {
-    return view('admin.login');
-});
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-});
+
 
 Route::get('/admin/properti/tambah-properti', function () {
     return view('admin.properti.tambah-properti');
@@ -45,15 +41,27 @@ Route::get('/admin/profil/edit', function () {
     return view('admin.profil.edit');
 });
 
-Route::get('/sales/masuk', function () {
-    return view('marketer.login');
+
+Route::prefix('admin')->middleware('auth.admin')->group(function () {
+    Route::middleware('guest')->withoutMiddleware('auth.admin')->group(function () {
+        Route::view('/daftar', 'admin.register')->name('admin.registerView');
+        Route::view('/masuk', 'admin.login')->name('admin.loginView');
+        Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
+        Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
+    });
+    Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::view('/dashboard', 'admin.dashboard')->name('admin.dashboard');
+
 });
 
-Route::get('/sales', function () {
-    return view('marketer.index');
-});
+Route::prefix('sales')->middleware('auth.sales')->group(function () {
+    Route::middleware('guest')->withoutMiddleware('auth.sales')->group(function () {
+        Route::view('/daftar', 'marketer.register')->name('sales.registerView');
+        Route::view('/masuk', 'marketer.login')->name('sales.loginView');
+        Route::post('/register', [SalesAuthController::class, 'register'])->name('sales.register');
+        Route::post('/login', [SalesAuthController::class, 'login'])->name('sales.login');
+    });
+    Route::get('/logout', [SalesAuthController::class, 'logout'])->name('sales.logout');
+    Route::view('/dashboard', 'marketer.dashboard')->name('sales.dashboard');
 
-Route::prefix('sales')->group(function () {
-    Route::view('/daftar', 'marketer.register');
-    Route::post('/', [SalesAuthController::class, 'register'])->name('sales.register');
 });

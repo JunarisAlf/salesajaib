@@ -2,9 +2,9 @@
 @section('title', 'Dashboard')
 
 @section('body')
+    @include('layout.alert')
     <div class="container-scroller">
         @include('admin.layout.navbar')
-
         <div class="container-fluid page-body-wrapper">
             @include('admin.layout.sidebar')
             <div class="main-panel">
