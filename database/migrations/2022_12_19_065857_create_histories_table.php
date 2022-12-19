@@ -16,14 +16,15 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->ipAddress('ip_address')->nullable();
-            $table->foreignId('property_id')->constrained('properties');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('property_id')->constrained('properties')->nullable();
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->string('customer_wa')->nullable();
             $table->string('customer_name')->nullable();
             $table->enum('type', ['click', 'submit']);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

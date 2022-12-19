@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\SalesAuthController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PropertyController;
 
 /*
@@ -19,6 +20,14 @@ use App\Http\Controllers\PropertyController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/aff/{sales}/{prop}', [HistoryController::class, 'click'])->name('affiliate');
+Route::get('/link/{sales}/{prop}', [HistoryController::class, 'affDirect'])->name('affiliateDirect');
+
+Route::get('/submit/{prop}', [HistoryController::class, 'submitView'] )->name('customer.submitView');
+Route::post('/submit/{prop}', [HistoryController::class, 'submit'])->name('customer.submit');
+
+Route::get('/properti/{prop}', [PropertyController::class, 'showOne'])->name('customer.showOneProp');
 
 
 Route::get('/admin/marketing/list-marketing', function () {
