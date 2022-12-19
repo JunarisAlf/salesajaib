@@ -9,9 +9,6 @@
             <a href="/">
                 <img class="tw-w-[80px]" src={{asset("images/logo.png")}} alt="logo" />
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html">
-                <img src={{asset("images/logo-mini.svg")}} alt="logo" />
-            </a>
         </div>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-top">

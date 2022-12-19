@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\SalesAuthController;
+use App\Http\Controllers\PropertyController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,12 +21,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/admin/properti/tambah-properti', function () {
-    return view('admin.properti.tambah-properti');
-});
-Route::get('/admin/properti/list-properti', function () {
-    return view('admin.properti.lihat-semua-properti');
-});
 Route::get('/admin/marketing/list-marketing', function () {
     return view('admin.marketing.lihat-semua-marketing');
 });
@@ -51,7 +47,17 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     });
     Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     Route::view('/dashboard', 'admin.dashboard')->name('admin.dashboard');
+    
+    Route::prefix('/properti')->group(function () {
+        Route::view('/tambah-properti', 'admin.properti.tambah-properti')
+            ->name('admin.createProperty');
+        Route::post('', [PropertyController::class, 'store'])
+            ->name('admin.storeProperty');
+        Route::get('/list-properti', [PropertyController::class, 'index'])
+            ->name('admin.showAllProperty');
 
+    });
+    
 });
 
 Route::prefix('sales')->middleware('auth.sales')->group(function () {
