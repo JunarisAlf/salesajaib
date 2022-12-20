@@ -2,8 +2,6 @@
 @section('title', 'Dashboard')
 
 @section('body')
-    @include('admin.layout.delete-modal')
-      
     <div class="container-scroller">
         @include('admin.layout.navbar')
         <div class="container-fluid page-body-wrapper">
@@ -45,7 +43,7 @@
                                                             @else
                                                             <button 
                                                                 type="button" 
-                                                                class="btn btn-inverse-info btn-fw btn-sm">
+                                                                class="btn btn-inverse-danger btn-fw btn-sm">
                                                                 sold
                                                             </button>
                                                             @endif
@@ -68,9 +66,12 @@
                                                             </button>
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-warning btn-md">
+                                                            <a 
+                                                                href={{route('admin.editView',[ 'prop' => $property->id])}}
+                                                                class="btn btn-warning btn-md"
+                                                            >
                                                                 Edit
-                                                            </button>
+                                                            </a>
                                                             <form 
                                                                 class="tw-inline-block"
                                                                 method="POST"

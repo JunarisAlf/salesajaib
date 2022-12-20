@@ -66,6 +66,10 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.showAllProperty');
         Route::delete('/{prop}', [PropertyController::class, 'destroy'])
             ->name('admin.deleteProperty');
+        Route::get('/{prop}', [PropertyController::class, 'edit'])->name('admin.editView');
+        Route::patch('/{prop}', [PropertyController::class, 'update'])->name('admin.updateProperty');
+        Route::patch('/baner/{prop}', [PropertyController::class, 'updateBaner'])
+            ->name('admin.updateBanerProperty');
 
     });
     
