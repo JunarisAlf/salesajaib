@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller{
     public function index(Request $request){
-        $properties = Property::orderBy('created_at', 'desc')->paginate(20);
+        $properties = Property::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.properti.lihat-semua-properti', ['properties' => $properties]);
     }
     public function showOne(Request $request, Property $prop){

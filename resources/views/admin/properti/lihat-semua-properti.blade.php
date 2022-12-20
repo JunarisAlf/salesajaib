@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Daftar Properti</h4>
-                                    <div class="table-responsive pt-3">
+                                    <div class="table-responsive pt-3 mb-4">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -94,6 +94,7 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    {{ $properties->links() }}
                                 </div>
                             </div>
                         </div>
