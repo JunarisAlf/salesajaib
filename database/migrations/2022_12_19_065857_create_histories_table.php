@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->ipAddress('ip_address')->nullable();
-            $table->foreignId('property_id')->constrained('properties')->nullable();
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('property_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->string('customer_wa')->nullable();
             $table->string('customer_name')->nullable();
             $table->enum('type', ['click', 'submit']);

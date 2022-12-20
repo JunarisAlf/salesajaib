@@ -44,7 +44,7 @@
                                 <div class="mb-2">
                                 </div>
                                 <div class="fw-light mt-4 text-center">
-                                    Belum memiliki akun? <a href={{route('admin.registerView')}} class="text-primary">Daftar sekarang</a>
+                                    Belum memiliki akun? <a href={{route('sales.registerView')}} class="text-primary">Daftar sekarang</a>
                                 </div>
                             </form>
                         </div>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller{
     public function index(Request $request){
-        $properties = DB::table('properties')->orderBy('created_at', 'desc')->paginate(20);
+        $properties = Property::orderBy('created_at', 'desc')->paginate(20);
         return view('admin.properti.lihat-semua-properti', ['properties' => $properties]);
     }
     public function showOne(Request $request, Property $prop){
@@ -35,6 +35,10 @@ class PropertyController extends Controller{
         ]);
 
         return redirect()->route('admin.createProperty')->with('success', 'Berhasil menambahkan properti');
+    }
+    public function destroy(Property $prop){
+        $prop->delete();
+        return back()->with('success', 'Data berhasil di hapus');
     }
 
 }

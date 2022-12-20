@@ -2,9 +2,10 @@
 @section('title', 'Dashboard')
 
 @section('body')
+    @include('admin.layout.delete-modal')
+      
     <div class="container-scroller">
         @include('admin.layout.navbar')
-
         <div class="container-fluid page-body-wrapper">
             @include('admin.layout.sidebar')
             <div class="main-panel">
@@ -20,7 +21,7 @@
                                                 <tr>
                                                     <th> No. </th>
                                                     <th> Nama Properti </th>
-                                                    <th> Harga(Rp) </th>
+                                                    <th> Harga</th>
                                                     <th> Status </th>
                                                     <th> Klik </th>
                                                     <th> Submit </th>
@@ -33,23 +34,35 @@
                                                     <tr>
                                                         <td>{{$index+1}}</td>
                                                         <td>{{$property->name}}</td>
-                                                        <td>{{$property->price}}</td>
+                                                        <td>{{ "Rp. " . number_format($property->price, 2, ",", ".")}}</td>
                                                         <td> 
+                                                            @if ($property->status == "available")
                                                             <button 
                                                                 type="button" 
                                                                 class="btn btn-inverse-success btn-fw btn-sm">
                                                                 available
                                                             </button>
+                                                            @else
+                                                            <button 
+                                                                type="button" 
+                                                                class="btn btn-inverse-info btn-fw btn-sm">
+                                                                sold
+                                                            </button>
+                                                            @endif
                                                         </td>
-                                                        <td>545</td>
-                                                        <td>15</td>
+                                                        <td>
+                                                            {{$property->histories->where('type', 'click')->count()}}
+                                                        </td>
+                                                        <td>
+                                                            {{$property->histories->where('type', 'submit')->count()}}
+                                                        </td>
                                                         <td>
                                                             <button type="button" class="btn btn-primary btn-md">
                                                                 Buat
                                                             </button>
-                                                            <button type="button" class="btn btn-success btn-md">
+                                                            <a href={{"/properti/{$property->id}"}} target="_blank" class="btn btn-success btn-md" >
                                                                 Preview
-                                                            </button>
+                                                            </a>
                                                             <button type="button" class="btn btn-info btn-md">
                                                                 Edit
                                                             </button>
@@ -58,9 +71,21 @@
                                                             <button type="button" class="btn btn-warning btn-md">
                                                                 Edit
                                                             </button>
-                                                            <button type="button" class="btn btn-danger btn-md">
-                                                                Hapus
-                                                            </button>
+                                                            <form 
+                                                                class="tw-inline-block"
+                                                                method="POST"
+                                                                action={{route('admin.deleteProperty', ['prop' => $property->id])}}>
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <button 
+                                                                    type="submit" 
+                                                                    class="btn btn-danger btn-md"
+                                                                    onclick="return confirm('Apakah anda yakin akan menghapus data properti ini?')" 
+                                                                    >
+                                                                    Hapus
+                                                                </button>
+                                                            </form>
+                                                           
                                                         </td>
                                                     </tr>
                                                 @endforeach

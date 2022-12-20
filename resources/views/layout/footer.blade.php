@@ -1,5 +1,6 @@
         <!-- plugins:js -->
         <script src={{asset("vendors/js/vendor.bundle.base.js")}}></script>
+        
         <!-- endinject -->
         <!-- Plugin js for this page -->
         <script src={{asset("vendors/chart.js/Chart.min.js")}}></script>

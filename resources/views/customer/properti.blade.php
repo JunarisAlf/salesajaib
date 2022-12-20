@@ -14,7 +14,9 @@
             src={{asset('storage/'. $prop->baner_filename)}} 
             alt="baner" 
             class="tw-w-full tw-h-auto sm:tw-w-[70%] ">
-        <img src={{asset('images/chat-wa.png')}} alt="" class="tw-w-[200px] md:tw-w-[300px] tw-h-auto">
+        <a href={{"/submit/{$prop->id}"}}>
+            <img src={{asset('images/chat-wa.png')}} alt="" class="tw-w-[200px] md:tw-w-[300px] tw-h-auto">
+        </a>
     </div>
 </body>
 </html>
