@@ -13,6 +13,10 @@ class PropertyController extends Controller{
         $properties = Property::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.properti.lihat-semua-properti', ['properties' => $properties]);
     }
+    public function indexSales(){
+        $properties = Property::orderBy('created_at', 'desc')->paginate(10);
+        return view('marketer.lihat-semua-property', ['properties' => $properties]);
+    }
     public function showOne(Request $request, Property $prop){
         return view('customer.properti', ['prop' => $prop]);
         // dd($prop);

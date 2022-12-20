@@ -25,7 +25,6 @@
                                             <div class="col-lg-8 d-flex flex-column">
                                                 @include('marketer.layout.bar-chart')
                                                 @include('marketer.layout.banner')
-                                                @include('marketer.layout.pending-request')
                                             </div>
                                             <div class="col-lg-4 d-flex flex-column">
                                             </div>

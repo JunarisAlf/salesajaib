@@ -11,7 +11,7 @@
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#properti" aria-expanded="false"
                 aria-controls="properti">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
+                <i class="menu-icon mdi mdi-home"></i>
                 <span class="menu-title">Properti</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -26,7 +26,7 @@
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#marketing" aria-expanded="false"
                 aria-controls="marketing">
-                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                <i class="menu-icon mdi mdi-human-greeting"></i>
                 <span class="menu-title">Tim Marketing</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -40,7 +40,7 @@
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#penjualan" aria-expanded="false"
                 aria-controls="penjualan">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
+                <i class="menu-icon mdi mdi-chart-areaspline"></i>
                 <span class="menu-title">Penjualan</span>
                 <i class="menu-arrow"></i>
             </a>

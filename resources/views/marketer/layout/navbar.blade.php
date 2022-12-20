@@ -6,11 +6,8 @@
             </button>
         </div>
         <div>
-            <a  href="/">
+            <a href="/">
                 <img class="tw-w-[80px]" src={{asset("images/logo.png")}} alt="logo" />
-            </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html">
-                <img src={{asset("images/logo-mini.svg")}} alt="logo" />
             </a>
         </div>
     </div>
@@ -90,8 +87,8 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
                         <img class="img-md rounded-circle block tw-mx-auto" src={{asset("images/faces/face8.jpg")}} alt="Profile image">
-                        <p class="mb-1 mt-3 font-weight-semibold">Fulan bin Fulan</p>
-                        <p class="fw-light text-muted mb-0">fulan@salesajaib.com</p>
+                        <p class="mb-1 mt-3 font-weight-semibold">{{Auth::user()->full_name}}</p>
+                        <p class="fw-light text-muted mb-0">{{Auth::user()->email}}</p>
                     </div>
                     <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile</a>
                     <a class="dropdown-item" href={{route('sales.logout')}}><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>

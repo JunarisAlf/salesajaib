@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\SalesAuthController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 
 /*
@@ -22,7 +23,7 @@ Route::get('/', function () {
 });
 // affiliate
 Route::get('/aff/{sales}/{prop}', [HistoryController::class, 'click'])->name('affiliate');
-Route::get('/link/{sales}/{prop}', [HistoryController::class, 'affDirect'])->name('affiliateDirect');
+Route::get('/form/{sales}/{prop}', [HistoryController::class, 'affDirect'])->name('affiliateForm');
 // submit
 Route::get('/submit/{prop}', [HistoryController::class, 'submitView'] )->name('customer.submitView');
 Route::post('/submit/{prop}', [HistoryController::class, 'submit'])->name('customer.submit');
@@ -30,21 +31,21 @@ Route::post('/submit/{prop}', [HistoryController::class, 'submit'])->name('custo
 Route::get('/properti/{prop}', [PropertyController::class, 'showOne'])->name('customer.showOneProp');
 
 
-Route::get('/admin/marketing/list-marketing', function () {
-    return view('admin.marketing.lihat-semua-marketing');
-});
-Route::get('/admin/penjualan/tambah-data-penjualan', function () {
-    return view('admin.penjualan.tambah');
-});
-Route::get('/admin/penjualan/riwayat-penjualan', function () {
-    return view('admin.penjualan.riwayat-penjualan');
-});
-Route::get('/admin/profil/lihat', function () {
-    return view('admin.profil.lihat');
-});
-Route::get('/admin/profil/edit', function () {
-    return view('admin.profil.edit');
-});
+// Route::get('/admin/marketing/list-marketing', function () {
+//     return view('admin.marketing.lihat-semua-marketing');
+// });
+// Route::get('/admin/penjualan/tambah-data-penjualan', function () {
+//     return view('admin.penjualan.tambah');
+// });
+// Route::get('/admin/penjualan/riwayat-penjualan', function () {
+//     return view('admin.penjualan.riwayat-penjualan');
+// });
+// Route::get('/admin/profil/lihat', function () {
+//     return view('admin.profil.lihat');
+// });
+// Route::get('/admin/profil/edit', function () {
+//     return view('admin.profil.edit');
+// });
 
 
 Route::prefix('admin')->middleware('auth.admin')->group(function () {
@@ -56,7 +57,6 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     });
     Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     Route::view('/dashboard', 'admin.dashboard')->name('admin.dashboard');
-    
     Route::prefix('/properti')->group(function () {
         Route::view('/tambah-properti', 'admin.properti.tambah-properti')
             ->name('admin.createProperty');
@@ -70,7 +70,6 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::patch('/{prop}', [PropertyController::class, 'update'])->name('admin.updateProperty');
         Route::patch('/baner/{prop}', [PropertyController::class, 'updateBaner'])
             ->name('admin.updateBanerProperty');
-
     });
     
 });
@@ -83,6 +82,7 @@ Route::prefix('sales')->middleware('auth.sales')->group(function () {
         Route::post('/login', [SalesAuthController::class, 'login'])->name('sales.login');
     });
     Route::get('/logout', [SalesAuthController::class, 'logout'])->name('sales.logout');
-    Route::view('/dashboard', 'marketer.dashboard')->name('sales.dashboard');
-
+    Route::get('/dashboard', [HomeController::class, 'salesHome'])->name('sales.dashboard');
+    Route::get('properti/list-properti', [PropertyController::class, 'indexSales'])
+            ->name('sales.showAllProperty');
 });

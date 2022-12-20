@@ -24,7 +24,6 @@
                                             <div class="col-lg-8 d-flex flex-column">
                                                 @include('admin.layout.bar-chart')
                                                 @include('admin.layout.banner')
-                                                @include('admin.layout.pending-request')
                                             </div>
                                             <div class="col-lg-4 d-flex flex-column">
                                             </div>
