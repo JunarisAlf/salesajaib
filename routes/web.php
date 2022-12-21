@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 
 /*
@@ -90,6 +91,18 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.storeTransaction');
         Route::get('/riwayat-penjualan', [TransactionController::class, 'showAll'])
             ->name('admin.showAllTransaction');
+    });
+    Route::prefix('/profil')->group(function () {
+        Route::get('/lihat', [UserController::class, 'index'])
+            ->name('admin.profile.index');
+        Route::get('/update', [UserController::class, 'edit'])
+            ->name('admin.profile.edit');
+        Route::patch('/update', [UserController::class, 'update'])
+            ->name('admin.profile.update');
+        Route::get('/foto', [UserController::class, 'updatePictView'])
+            ->name('admin.profile.updatePictView');
+        Route::patch('/foto', [UserController::class, 'updatePict'])
+            ->name('admin.profile.updatePict');
     });
     
 });

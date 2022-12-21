@@ -64,9 +64,10 @@
             </a>
             <div class="collapse" id="akun">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="/admin/profil/lihat"> Lihat Profil </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/profil/edit"> Update Profil </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/sign-out"> Sign Out </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.index')}}> Lihat Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.update')}}> Update Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.updatePictView')}}> Update Foto Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.logout')}}> Sign Out </a></li>
                 </ul>
             </div>
         </li>
