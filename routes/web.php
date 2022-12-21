@@ -7,6 +7,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\TransactionController;
 use App\Models\User;
 
 /*
@@ -82,10 +83,13 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.checkAff');
     });
     Route::prefix('/penjualan')->group(function () {
-        Route::get('/tambah-data-penjualan', [SalesController::class, 'showAll'])
-            ->name('admin.createPenjualan');
-        Route::get('/riwayat-penjualan', [SalesController::class, 'showAll'])
-            ->name('admin.showAllPenjualan');
+        Route::get('/tambah-data-penjualan', [TransactionController::class, 'create'])
+            ->name('admin.createTransaction');
+        // Route::post('/tambah-data-penjualan-validation', [TransactionController::class, 'storeValidation'])->name('admin.storeTrxValidation');
+        Route::post('/tambah-data-penjualan', [TransactionController::class, 'store'])
+            ->name('admin.storeTransaction');
+        Route::get('/riwayat-penjualan', [TransactionController::class, 'showAll'])
+            ->name('admin.showAllTransaction');
     });
     
 });

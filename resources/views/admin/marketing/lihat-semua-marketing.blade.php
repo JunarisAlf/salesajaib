@@ -37,7 +37,7 @@
                                                         <img src={{asset("storage/{$s->profile_filename}")}} alt="image" />
                                                     </td>
                                                     <td>
-                                                        {{$s->full_name}}
+                                                        {{"{$s->full_name} [{$s->id}]"}}
                                                     </td>
                                                     <td>
                                                         {{$s->no_wa}}

@@ -31,7 +31,7 @@
                                                 @foreach ($properties as $index => $property)
                                                     <tr>
                                                         <td>{{$index+1}}</td>
-                                                        <td>{{$property->name}}</td>
+                                                        <td>{{"{$property->name} [{$property->id}]"}}</td>
                                                         <td>{{ "Rp. " . number_format($property->price, 2, ",", ".")}}</td>
                                                         <td> 
                                                             @if ($property->status == "available")
