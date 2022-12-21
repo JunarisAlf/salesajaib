@@ -13,23 +13,7 @@ class TransactionController extends Controller
     public function create(){
         return view('admin.penjualan.tambah');
     }
-    public function storeValidation(Request $request){
-        $request->validate([
-            'property_id' => 'required|exists:App\Models\Property,id',
-            'sales_id' => 'required|exists:App\Models\User,id',
-            'price' => 'required|numeric',
-            'customer_name' => 'required',
-            'customer_wa' => 'required'
-        ]);
-        
-        $prop = Property::find($request->input('property_id'));
-        $sales = User::find($request->input('sales_id'));
-        dd($prop, $sales, $request->all());
-        // return view('admin.penjualan.tambah', [
-        //     'proper'
-        // ]);
 
-    }
     public function store(Request $request){
         $request->validate([
             'property_id' => 'required|exists:App\Models\Property,id',
@@ -38,6 +22,9 @@ class TransactionController extends Controller
             'customer_name' => 'required',
             'customer_wa' => 'required'
         ]);
+        $prop = Property::find($request->input('property_id'));
+        $prop->status = 'sold';
+        $prop->save();
         Transaction::create([
             'property_id' => $request->input('property_id'),
             'user_id' => $request->input('sales_id'),
@@ -52,7 +39,8 @@ class TransactionController extends Controller
 
     }
     public function showAll(){
-        
+        $trxs = Transaction::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.penjualan.riwayat-penjualan', ['trxs' => $trxs]);
     }
 }
  
