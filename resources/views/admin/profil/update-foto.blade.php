@@ -23,7 +23,7 @@
                                         @csrf
                                         @method('PATCH')
                                         <div class="mb-3 mt-3">
-                                            <label class="form-label" for="formFile">Upload Foto Profil</label>
+                                            <label class="form-label" for="formFile">Upload Foto Profil (Ratio 1:1 atau persegi)</label>
                                             <input class="form-control tw-h-auto" type="file" id="formFile" name="pict">
                                             @error('pict')
                                             <span class="invalid-feedback" role="alert">

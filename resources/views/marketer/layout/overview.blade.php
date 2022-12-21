@@ -4,7 +4,7 @@
         <div class="statistics-details d-flex align-items-center justify-content-between">
             <div>
                 <p class="statistics-title">Penjualan</p>
-                <h3 class="rate-percentage">0</h3>
+                <h3 class="rate-percentage">{{$count['sold']}}</h3>
                 
             </div>
             <div>

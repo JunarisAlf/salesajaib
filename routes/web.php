@@ -60,7 +60,7 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
     });
     Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-    Route::view('/dashboard', 'admin.dashboard')->name('admin.dashboard');
+    Route::get('/dashboard', [HomeController::class, 'adminHome'])->name('admin.dashboard');
     Route::prefix('/properti')->group(function () {
         Route::view('/tambah-properti', 'admin.properti.tambah-properti')
             ->name('admin.createProperty');
