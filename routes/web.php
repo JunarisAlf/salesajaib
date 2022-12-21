@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Models\User;
 
 /*
@@ -93,19 +93,19 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.showAllTransaction');
     });
     Route::prefix('/profil')->group(function () {
-        Route::get('/lihat', [UserController::class, 'index'])
+        Route::get('/lihat', [AdminController::class, 'index'])
             ->name('admin.profile.index');
-        Route::get('/update', [UserController::class, 'edit'])
+        Route::get('/update', [AdminController::class, 'edit'])
             ->name('admin.profile.edit');
-        Route::patch('/update', [UserController::class, 'update'])
+        Route::patch('/update', [AdminController::class, 'update'])
             ->name('admin.profile.update');
-        Route::get('/foto', [UserController::class, 'updatePictView'])
+        Route::get('/foto', [AdminController::class, 'updatePictView'])
             ->name('admin.profile.updatePictView');
-        Route::patch('/foto', [UserController::class, 'updatePict'])
+        Route::patch('/foto', [AdminController::class, 'updatePict'])
             ->name('admin.profile.updatePict');
         Route::view('/update-password', 'admin.profil.update-password')
             ->name('admin.profile.updatePWView');
-        Route::patch('/foto', [UserController::class, 'updatePW'])
+        Route::patch('/update-password', [AdminController::class, 'updatePW'])
             ->name('admin.profile.updatePW');
     });
     
@@ -122,4 +122,20 @@ Route::prefix('sales')->middleware('auth.sales')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'salesHome'])->name('sales.dashboard');
     Route::get('properti/list-properti', [PropertyController::class, 'indexSales'])
             ->name('sales.showAllProperty');
+    Route::prefix('/profil')->group(function () {
+        Route::get('/lihat', [SalesController::class, 'index'])
+            ->name('sales.profile.index');
+        Route::get('/update', [SalesController::class, 'edit'])
+            ->name('sales.profile.edit');
+        Route::patch('/update', [SalesController::class, 'update'])
+            ->name('sales.profile.update');
+        Route::get('/foto', [SalesController::class, 'updatePictView'])
+            ->name('sales.profile.updatePictView');
+        Route::patch('/foto', [SalesController::class, 'updatePict'])
+            ->name('sales.profile.updatePict');
+        Route::view('/update-password', 'marketer.profil.update-password')
+            ->name('sales.profile.updatePWView');
+        Route::patch('/update-password', [SalesController::class, 'updatePW'])
+            ->name('sales.profile.updatePW');
+    });
 });

@@ -30,9 +30,11 @@
             </a>
             <div class="collapse" id="akun">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Lihat Profil </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Update Profil </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Sign Out </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.profile.index')}}> Lihat Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.profile.update')}}> Update Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.profile.updatePictView')}}> Update Foto Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.profile.updatePWView')}}> Update Password </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.logout')}}> Sign Out </a></li>
                 </ul>
             </div>
         </li>
