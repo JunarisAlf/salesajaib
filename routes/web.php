@@ -103,6 +103,10 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.profile.updatePictView');
         Route::patch('/foto', [UserController::class, 'updatePict'])
             ->name('admin.profile.updatePict');
+        Route::view('/update-password', 'admin.profil.update-password')
+            ->name('admin.profile.updatePWView');
+        Route::patch('/foto', [UserController::class, 'updatePW'])
+            ->name('admin.profile.updatePW');
     });
     
 });

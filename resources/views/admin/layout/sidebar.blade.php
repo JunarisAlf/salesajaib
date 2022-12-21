@@ -67,6 +67,7 @@
                     <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.index')}}> Lihat Profil </a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.update')}}> Update Profil </a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.updatePictView')}}> Update Foto Profil </a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.profile.updatePWView')}}> Update Password </a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('admin.logout')}}> Sign Out </a></li>
                 </ul>
             </div>

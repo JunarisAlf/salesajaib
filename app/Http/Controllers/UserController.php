@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -36,7 +37,6 @@ class UserController extends Controller
         $pict = Auth::user()->profile_filename;
         return view('admin.profil.update-foto', ['pict' => $pict]);
     }
-
     public function updatePict(Request $request){
         $request->validate([
             'pict' => 'required|mimes:jpg,png,jpeg|max:2048'
@@ -49,5 +49,27 @@ class UserController extends Controller
         $user->save();
 
         return back()->with('success', 'Foto Profil berhasil di update');
+    }
+
+    public function updatePW(Request $request){
+        $request->validate([
+            'old_pw' => 'required', 
+            'new_pw' => 'required|confirmed|min:6',
+        ]);
+
+        #Match The Old Password
+        if(!Hash::check($request->input('old_pw'), auth()->user()->password)){
+            return back()->with("error", "Password lama tidak cocok!");
+        }
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_pw)
+        ]);
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.loginView')->with('success', 'Password berhasil dirubah, silahkan login kembali!');
     }
 }
