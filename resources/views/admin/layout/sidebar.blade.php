@@ -17,8 +17,8 @@
             </a>
             <div class="collapse" id="properti">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="/admin/properti/tambah-properti">Tambah Properti</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/properti/list-properti">Lihat semua properti</a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.createProperty')}}>Tambah Properti</a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.showAllProperty')}}>Lihat semua properti</a></li>
                 </ul>
             </div>
         </li>
@@ -32,7 +32,9 @@
             </a>
             <div class="collapse" id="marketing">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/admin/marketing/list-marketing">Lihat semua anggota</a>
+                    <li class="nav-item"><a class="nav-link" href={{route('admin.showAllSales')}}>Lihat semua anggota</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href={{route('admin.checkAffView')}}>Check Affiliate</a>
                     </li>
                 </ul>
             </div>
@@ -46,8 +48,8 @@
             </a>
             <div class="collapse" id="penjualan">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="/admin/penjualan/tambah-data-penjualan">Tambah data penjualan</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/penjualan/riwayat-penjualan">Lihat riwayat penjualan</a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.createPenjualan')}}>Tambah data penjualan</a></li>
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.showAllPenjualan')}}>Lihat riwayat penjualan</a></li>
                 </ul>
             </div>
         </li>

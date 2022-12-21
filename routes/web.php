@@ -76,6 +76,16 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     Route::prefix('/marketing')->group(function () {
         Route::get('/list-marketing', [SalesController::class, 'showAll'])
             ->name('admin.showAllSales');
+        Route::get('/cek-affiliate', [SalesController::class, 'checkAffView'])
+            ->name('admin.checkAffView');
+        Route::post('/cek-affiliate', [SalesController::class, 'checkAff'])
+            ->name('admin.checkAff');
+    });
+    Route::prefix('/penjualan')->group(function () {
+        Route::get('/tambah-data-penjualan', [SalesController::class, 'showAll'])
+            ->name('admin.createPenjualan');
+        Route::get('/riwayat-penjualan', [SalesController::class, 'showAll'])
+            ->name('admin.showAllPenjualan');
     });
     
 });

@@ -9,4 +9,8 @@ class History extends Model
 {
     use HasFactory;
     protected $guarded = [''];
+
+    public function sales(){
+        return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
+    }
 }
