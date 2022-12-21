@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\SalesAuthController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\SalesController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +72,10 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::patch('/{prop}', [PropertyController::class, 'update'])->name('admin.updateProperty');
         Route::patch('/baner/{prop}', [PropertyController::class, 'updateBaner'])
             ->name('admin.updateBanerProperty');
+    });
+    Route::prefix('/marketing')->group(function () {
+        Route::get('/list-marketing', [SalesController::class, 'showAll'])
+            ->name('admin.showAllSales');
     });
     
 });

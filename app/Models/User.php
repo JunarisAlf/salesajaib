@@ -31,4 +31,7 @@ class User extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
+    public function histories(){
+        return $this->hasMany(History::class, 'user_id', 'id');
+    }
 }

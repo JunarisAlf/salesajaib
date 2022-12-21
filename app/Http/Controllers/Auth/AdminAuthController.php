@@ -27,6 +27,7 @@ class AdminAuthController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'role' => 'admin',
+            'profile_filename' => 'default_profile.jpeg'
         ]);
          return redirect()->route('admin.loginView')->with('success', 'Akun berhasil dibuat, silahkan login!');
     }

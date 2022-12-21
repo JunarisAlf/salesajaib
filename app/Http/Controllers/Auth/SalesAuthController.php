@@ -22,6 +22,7 @@ class SalesAuthController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'role' => 'sales',
+            'profile_filename' => 'default_profile.jpeg'
         ]);
          return redirect()->route('sales.loginView')->with('success', 'Akun berhasil dibuat, silahkan login!');
     }
