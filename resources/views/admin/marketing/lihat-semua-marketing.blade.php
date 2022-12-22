@@ -52,7 +52,7 @@
                                                         {{$s->histories->where('type', 'submit')->count()}}
                                                     </td>
                                                     <td>
-                                                        10
+                                                        {{$s->transactions->count()}}
                                                     </td>
                                                 </tr> 
                                                 @endforeach
