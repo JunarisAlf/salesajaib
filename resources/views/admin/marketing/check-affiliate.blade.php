@@ -55,6 +55,7 @@
                                                         <th> No Wa</th>
                                                         <th> Nama Sales </th>
                                                         <th> ID Sales </th>
+                                                        <th> ID Property </th>
                                                         <th> Tanggal </th>
                                                     </tr>
                                                 </thead>
@@ -66,6 +67,7 @@
                                                         <td>{{$history->customer_wa}}</td>
                                                         <td>{{$history->sales->full_name}}</td>
                                                         <td>{{$history->user_id}}</td>
+                                                        <td>{{$history->property_id}}</td>
                                                         <td>{{$history->created_at}}</td>
                                                     </tr>
                                                     @endforeach

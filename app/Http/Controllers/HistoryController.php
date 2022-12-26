@@ -15,10 +15,10 @@ class HistoryController extends Controller{
             'user_id' => $sales->id,
             'type' => 'click'
         ]);
-        return redirect("/properti/{$prop->id}")->withCookie('sales_id', $sales->id);
+        return redirect("/properti/{$prop->id}")->withCookie(cookie()->forever('sales_id', $sales->id));
     }
     public function affDirect(User $sales, Property $prop){
-        return redirect("/submit/{$prop->id}")->withCookie('sales_id', $sales->id);
+        return redirect("/submit/{$prop->id}")->withCookie(cookie()->forever('sales_id', $sales->id));
     }
 
     public function submitView($prop){
@@ -39,6 +39,6 @@ class HistoryController extends Controller{
             'user_id' => $request->cookie('sales_id'),
             'type' => 'submit'
         ]);
-        return redirect()->away('https://wa.me/6282284393018');
+        return redirect()->away('https://wa.me/6281273858690');
     }
 }
