@@ -86,7 +86,6 @@
                     <img class="img-xs rounded-circle" src="/storage/{{Auth::user()->profile_filename}}" alt="Profile image"> </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
-                        <img class="img-md rounded-circle block tw-mx-auto" src={{asset("images/faces/face8.jpg")}} alt="Profile image">
                         <p class="mb-1 mt-3 font-weight-semibold">{{Auth::user()->full_name}}</p>
                         <p class="fw-light text-muted mb-0">{{Auth::user()->email}}</p>
                     </div>
