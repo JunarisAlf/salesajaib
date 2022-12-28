@@ -62,14 +62,16 @@
                                                         <td>
                                                             <button class="btn btn-primary btn-md"
                                                                 onclick="
-                                                                    navigator.clipboard.writeText('{{route('affiliate', ['sales' => Auth::user()->id, 'prop' => $property->id])}}');
-                                                                    alert('Link Berhasil disalin di clipboard'); " >
+                                                                    navigator.clipboard.writeText('{{route('affiliate', ['sales' => Auth::user()->id, 'prop' => $property->id])}}')
+                                                                    .then(function(){alert('Link Berhasil disalin di clipboard')});
+                                                                    " >
                                                                 Landing Page
                                                             </button>
                                                             <button  class="btn btn-warning btn-md" 
                                                                 onclick="
-                                                                    navigator.clipboard.writeText('{{route('affiliateForm', ['sales' => Auth::user()->id, 'prop' => $property->id])}}');
-                                                                    alert('Link Berhasil disalin di clipboard'); ">
+                                                                    navigator.clipboard.writeText('{{route('affiliateForm', ['sales' => Auth::user()->id, 'prop' => $property->id])}}')
+                                                                    .then(function(){alert('Link Berhasil disalin di clipboard')});
+                                                                     ">
                                                                 Form
                                                             </button>
                                                         </td>
