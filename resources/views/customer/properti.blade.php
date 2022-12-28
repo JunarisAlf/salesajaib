@@ -14,7 +14,7 @@
             src={{asset('storage/'. $prop->baner_filename)}} 
             alt="baner" 
             class="tw-w-full tw-h-auto sm:tw-w-[70%] ">
-        <a href={{"/submit/{$prop->id}"}}>
+        <a href="{{route("affiliateForm", ['prop' => $prop->id, 'sales' => $sales->id ])}}">
             <img src={{asset('images/chat-wa.png')}} alt="" class="tw-w-[200px] md:tw-w-[300px] tw-h-auto">
         </a>
     </div>

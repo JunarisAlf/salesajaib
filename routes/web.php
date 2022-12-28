@@ -27,9 +27,9 @@ Route::get('/', function () {
 });
 // affiliate
 Route::get('/aff/{sales}/{prop}', [HistoryController::class, 'click'])->name('affiliate');
-Route::get('/form/{sales}/{prop}', [HistoryController::class, 'affDirect'])->name('affiliateForm');
+Route::get('/form/{sales}/{prop}', [HistoryController::class, 'form'])->name('affiliateForm');
 // submit
-Route::get('/submit/{prop}', [HistoryController::class, 'submitView'] )->name('customer.submitView');
+// Route::get('/submit/{prop}', [HistoryController::class, 'submitView'] )->name('customer.submitView');
 Route::post('/submit/{prop}', [HistoryController::class, 'submit'])->name('customer.submit');
 // properti
 Route::get('/properti/{prop}', [PropertyController::class, 'showOne'])->name('customer.showOneProp');

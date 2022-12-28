@@ -6,6 +6,7 @@ use App\Models\History;
 use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class HistoryController extends Controller{
     public function click(Request $request, User $sales, Property $prop){
@@ -15,15 +16,24 @@ class HistoryController extends Controller{
             'user_id' => $sales->id,
             'type' => 'click'
         ]);
-        return redirect("/properti/{$prop->id}")->withCookie(cookie()->forever('sales_id', $sales->id));
-    }
-    public function affDirect(User $sales, Property $prop){
-        return redirect("/submit/{$prop->id}")->withCookie(cookie()->forever('sales_id', $sales->id));
+        // return redirect("/properti/{$prop->id}")->withCookie(cookie()->forever('sales_id', $sales->id));
+        return response()
+            ->view('customer.properti', ['prop' => $prop, 'sales' => $sales])
+            ->cookie('sales_id', $sales->id, 5);
     }
 
-    public function submitView($prop){
-        return view('customer.submit', ['prop_id' => $prop]);
+    public function form(User $sales, Property $prop){
+        // return redirect("/submit/{$prop->id}")->withCookie(cookie()->forever('sales_id', $sales->id));
+
+        return response()
+            ->view('customer.submit', ['prop_id' => $prop])
+            ->cookie('sales_id', $sales->id, 5);
+
     }
+
+    // public function submitView($prop){
+    //     return view('customer.submit', ['prop_id' => $prop]);
+    // }
 
     public function submit(Request $request, Property $prop){
         $request->validate([
