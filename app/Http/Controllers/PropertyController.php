@@ -15,7 +15,8 @@ class PropertyController extends Controller{
     }
     public function indexSales(){
         $properties = Property::orderBy('created_at', 'desc')->paginate(10);
-        return view('marketer.lihat-semua-property', ['properties' => $properties]);
+        $base_url_form = env("LANDING_URL", 'https://localhost');
+        return view('marketer.lihat-semua-property', ['properties' => $properties, 'base_url_form' => $base_url_form]);
     }
     public function showOne(Request $request, Property $prop){
         return view('customer.properti', ['prop' => $prop]);
@@ -35,6 +36,7 @@ class PropertyController extends Controller{
         Property::create([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
+            'slug' => $request->input('slug'),
             'status' => 'available',
             'baner_filename' => $filename,
         ]);
@@ -57,6 +59,7 @@ class PropertyController extends Controller{
         ]);
         $prop->name = $request->input('name');
         $prop->price = $request->input('price');
+        $prop->slug = $request->input('slug');
         $prop->status = $request->input('status');
         $prop->save();
         return redirect()->route('admin.showAllProperty')->with('success', 'Data berhasil di di Update');

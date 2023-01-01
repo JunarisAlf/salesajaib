@@ -50,6 +50,20 @@ i   @include('admin.layout.update-baner-modal')
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <input 
+                                            type="text"                                       class="form-control form-control-lg @error('slug') is-invalid @enderror"
+                                            id="slug" 
+                                            placeholder="slug" 
+                                            name="slug" required
+                                            value={{ $property->slug }}
+                                        >
+                                            @error('slug')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
                                             <select 
                                                 class="form-select form-select-lg mb-3 ps-4 tw-text-base py-2.5" 
                                                 aria-label=".form-select-lg example"

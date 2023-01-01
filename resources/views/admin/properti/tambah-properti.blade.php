@@ -52,6 +52,20 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                        <div class="form-group">
+                                            <input 
+                                            type="text"                                       class="form-control form-control-lg @error('slug') is-invalid @enderror"
+                                            id="slug" 
+                                            placeholder="slug" 
+                                            name="slug" required
+                                            value={{ old('slug') }}
+                                        >
+                                            @error('slug')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="formFile">Upload gambar baner</label>
                                             <input class="form-control tw-h-auto" type="file" id="formFile" name="baner">

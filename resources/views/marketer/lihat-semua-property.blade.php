@@ -62,7 +62,7 @@
                                                         <td>
                                                             <button class="btn btn-primary btn-md"
                                                                 onclick="
-                                                                    navigator.clipboard.writeText('{{route('affiliate', ['sales' => Auth::user()->id, 'prop' => $property->id])}}')
+                                                                    navigator.clipboard.writeText('{{$base_url_form.Auth::user()->id.'/'.$property->slug }}')
                                                                     .then(function(){alert('Link Berhasil disalin di clipboard')});
                                                                     " >
                                                                 Landing Page
