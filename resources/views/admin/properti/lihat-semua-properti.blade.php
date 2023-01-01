@@ -55,15 +55,16 @@
                                                             {{$property->histories->where('type', 'submit')->count()}}
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-primary btn-md">
+                                                            {{-- <button type="button" class="btn btn-primary btn-md">
                                                                 Buat
-                                                            </button>
-                                                            <a href={{"/properti/{$property->id}"}} target="_blank" class="btn btn-success btn-md" >
+                                                            </button> --}}
+                                                            <a href={{"https://property.salesajaib.com/" . Auth::user()->id . 
+                                                            "/{$property->slug}"}} target="_blank" class="btn btn-success btn-md" >
                                                                 Preview
                                                             </a>
-                                                            <button type="button" class="btn btn-info btn-md">
+                                                            {{-- <button type="button" class="btn btn-info btn-md">
                                                                 Edit
-                                                            </button>
+                                                            </button> --}}
                                                         </td>
                                                         <td>
                                                             <a 

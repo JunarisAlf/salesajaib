@@ -17,13 +17,13 @@
                                         aria-labelledby="overview">
                                         @include('marketer.layout.overview')
                                         <div class="row">
-                                            @include('marketer.layout.line-chart')
-                                            @include('marketer.layout.status-summary')
+                                            {{-- @include('marketer.layout.line-chart') --}}
+                                            {{-- @include('marketer.layout.status-summary') --}}
                                         </div>
 
                                         <div class="row">
                                             <div class="col-lg-8 d-flex flex-column">
-                                                @include('marketer.layout.bar-chart')
+                                                {{-- @include('marketer.layout.bar-chart') --}}
                                                 @include('marketer.layout.banner')
                                             </div>
                                             <div class="col-lg-4 d-flex flex-column">
