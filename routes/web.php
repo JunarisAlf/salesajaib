@@ -23,7 +23,7 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('sales.loginView');
 });
 // affiliate
 Route::get('/aff/{sales}/{prop}', [HistoryController::class, 'click'])->name('affiliate');
