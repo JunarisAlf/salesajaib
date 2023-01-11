@@ -111,13 +111,20 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     
 });
 
-Route::prefix('sales')->middleware('auth.sales')->group(function () {
-    Route::middleware('guest')->withoutMiddleware('auth.sales')->group(function () {
+Route::prefix('sales')->middleware(['auth.sales', 'is_verified'])->group(function () {
+    Route::middleware('guest')->withoutMiddleware(['auth.sales', 'is_verified'])->group(function () {
         Route::view('/daftar', 'marketer.register')->name('sales.registerView');
         Route::view('/masuk', 'marketer.login')->name('sales.loginView');
         Route::post('/register', [SalesAuthController::class, 'register'])->name('sales.register');
         Route::post('/login', [SalesAuthController::class, 'login'])->name('sales.login');
     });
+    Route::withoutMiddleware('is_verified')->group(function(){
+        Route::view('/verify', 'marketer.verify')->name('sales.verifyView');
+        Route::post('/verify', [SalesAuthController::class, 'verify'])->name('sales.verify');
+        Route::view('/verify-update', 'marketer.verify-update')->name('sales.verifyUpdateView');
+        Route::put('/verify-update', [SalesAuthController::class, 'verifyUpdate'])->name('sales.verifyUpdate');
+    });
+
     Route::get('/logout', [SalesAuthController::class, 'logout'])->name('sales.logout');
     Route::get('/dashboard', [HomeController::class, 'salesHome'])->name('sales.dashboard');
     Route::get('properti/list-properti', [PropertyController::class, 'indexSales'])

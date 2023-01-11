@@ -26,13 +26,13 @@ class PropertyController extends Controller{
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
+            'slug' => 'required',
             'baner' => 'required|mimes:jpg,png,jpeg|max:2048'
         ]);
 
         $filepath = $request->file('baner')->store('public');
         $filename = explode( '/', $filepath);
         $filename = $filename[1];
-
         Property::create([
             'name' => $request->input('name'),
             'price' => $request->input('price'),

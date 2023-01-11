@@ -52,12 +52,13 @@
                                                             {{$property->histories->where('user_id', Auth::user()->id)->where('type', 'click')->count()}}
                                                         </td>
                                                         <td>
-                                                            {{$property->histories->where('type', 'submit')->count()}}
+                                                            {{$property->histories->where('user_id', Auth::user()->id)->where('type', 'submit')->count()}}
                                                         </td>
                                                         <td>
-                                                            <a href={{"/properti/{$property->id}"}} target="_blank" class="btn btn-success btn-md" >
-                                                                Preview
-                                                            </a>
+                                                            <a href={{"https://property.salesajaib.com/" . Auth::user()->id . 
+                                                                "/{$property->slug}"}} target="_blank" class="btn btn-success btn-md" >
+                                                                    Preview
+                                                                </a>
                                                         </td>
                                                         <td>
                                                             <button class="btn btn-primary btn-md"
