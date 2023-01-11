@@ -38,7 +38,7 @@ class SalesController extends Controller
     public function update(Request $request){
         $user_id = Auth::user()->id;
         $request->validate([
-            'no_wa' => ['required', Rule::unique('users')->ignore($user_id)],
+            'no_wa' => ['required', 'regex:/^62/',Rule::unique('users')->ignore($user_id)],
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')->ignore($user_id)],
         ]);

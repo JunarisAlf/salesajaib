@@ -14,7 +14,7 @@ class SalesAuthController extends Controller
     
     public function register(Request $request){
         $request->validate([
-            'noWa' => 'required|unique:App\Models\User,no_wa',
+            'noWa' => 'required|regex:/^62/|unique:App\Models\User,no_wa',
             'fullName' => 'required',
             'password' => 'required|confirmed|min:6',
             'email' => 'required|email|unique:App\Models\User,email'
@@ -49,7 +49,7 @@ class SalesAuthController extends Controller
     public function verifyUpdate(Request $request){
         $user = Auth::user();
         $request->validate([
-            'noWa' => ['required', Rule::unique('users', 'no_wa')->ignore($user->id)],
+            'noWa' => ['required', 'regex:/^62/',Rule::unique('users', 'no_wa')->ignore($user->id)],
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
         ]);
         $user->no_wa = $request->input('noWa');
@@ -60,7 +60,7 @@ class SalesAuthController extends Controller
     }
     public function login(Request $request){
         $request->validate([
-            'noWa' => 'required',
+            'noWa' => 'required|regex:/^62/',
             'password' => 'required',
         ]);
         $credentials = [
