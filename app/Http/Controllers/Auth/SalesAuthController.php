@@ -77,6 +77,10 @@ class SalesAuthController extends Controller
         }
         return back()->withInput()->with('error', 'No WA atau password yang anda masukan salah, coba lagi!');
     }
+
+    public function forgot(Request $request){
+
+    }
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
