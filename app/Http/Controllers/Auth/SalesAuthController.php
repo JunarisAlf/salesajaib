@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Mail\OtpMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class SalesAuthController extends Controller
@@ -31,6 +33,7 @@ class SalesAuthController extends Controller
         ]);
         Auth::loginUsingId($user->id);
         // send email
+        Mail::to($user->email)->queue(new OtpMail(['otp' => $user->otp]));
 
         return redirect()->route('sales.verifyView');
     }
