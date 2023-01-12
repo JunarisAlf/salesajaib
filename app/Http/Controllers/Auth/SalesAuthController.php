@@ -42,10 +42,10 @@ class SalesAuthController extends Controller
         return redirect()->route('sales.verifyView');
     }
     public function verify(Request $request){
-        $otp = Auth::user()->otp;
+        $user = Auth::user();
+        $otp = $user->otp;
         $input_otp = $request->input('otp');
         if($otp == $input_otp){
-            $user = Auth::user();
             $user->is_verified = true;
             $user->save();
             return redirect()->route('sales.dashboard')->with('success', 'Akun berhasil diverifikasi!');
