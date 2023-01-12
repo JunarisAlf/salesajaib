@@ -119,6 +119,10 @@ Route::prefix('sales')->middleware(['auth.sales', 'is_verified'])->group(functio
         Route::post('/login', [SalesAuthController::class, 'login'])->name('sales.login');
         Route::view('/forgot-password', 'marketer.forgot-password')->name('sales.forgotPwView');
         Route::post('/forgot-password', [SalesAuthController::class, 'forgot'])->name('sales.forgotPw');
+        Route::get('/forgot-password/verify', [SalesAuthController::class, 'forgotPwVerifyView'])->name('sales.forgotPwVerifyView');
+        Route::post('/forgot-password/verify', [SalesAuthController::class, 'forgotVerify'])->name('sales.forgotPwVerify');
+
+
     });
     Route::withoutMiddleware('is_verified')->group(function(){
         Route::view('/verify', 'marketer.verify')->name('sales.verifyView');

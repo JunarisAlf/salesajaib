@@ -13,13 +13,13 @@
                                 <img class="tw-block tw-w-[200px] tw-mx-auto" src={{asset("images/logo.png")}} alt="logo">
                             </div>
                             <h4 class="tw-text-xl tw-font-bold">Lupa password</h4>
-                            <h6 class="fw-light tw-text-slate-500 my-2">Masukan nomor whatsapp atau email akun anda!</h6>
-                            <form class="pt-3" method="post" action={{route('sales.forgotPwView')}}>
+                            <h6 class="fw-light tw-text-slate-500 my-2">Email akun anda!</h6>
+                            <form class="pt-3" method="post" action={{route('sales.forgotPw')}}>
                                 @csrf
                                 <div class="form-group">
                                     <input type="text"
                                     class="form-control form-control-lg"
-                                    id="identifier" placeholder="Nomor WA 628XX atau email" name="identifier" required
+                                    id="" placeholder="Nomor WA 628XX atau email" name="identifier" required
                                     >
                                 </div>
                                
