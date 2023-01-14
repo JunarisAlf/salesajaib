@@ -42,5 +42,9 @@ class TransactionController extends Controller
         $trxs = Transaction::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.penjualan.riwayat-penjualan', ['trxs' => $trxs]);
     }
+    public function showForSales(){
+        $trxs = Transaction::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
+        return view('marketer.riwayat-penjualan', ['trxs' => $trxs]);
+    }
 }
  

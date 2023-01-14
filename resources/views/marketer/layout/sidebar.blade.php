@@ -21,6 +21,20 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#penjualan" aria-expanded="false"
+                aria-controls="penjualan">
+                <i class="menu-icon mdi mdi-home"></i>
+                <span class="menu-title">Penjualan</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="penjualan">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.showAllTransaction')}}>Lihat Riwayat Penjualan</a></li>
+                </ul>
+            </div>
+        </li>
+
         <li class="nav-item nav-category">Akun</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#akun" aria-expanded="false" aria-controls="akun">

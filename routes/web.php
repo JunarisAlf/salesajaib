@@ -134,7 +134,9 @@ Route::prefix('sales')->middleware(['auth.sales', 'is_verified'])->group(functio
     Route::get('/logout', [SalesAuthController::class, 'logout'])->name('sales.logout');
     Route::get('/dashboard', [HomeController::class, 'salesHome'])->name('sales.dashboard');
     Route::get('properti/list-properti', [PropertyController::class, 'indexSales'])
-            ->name('sales.showAllProperty');
+        ->name('sales.showAllProperty');
+    Route::get('penjualan/riwayat-penjualan', [TransactionController::class, 'showForSales'])
+        ->name('sales.showAllTransaction');
     Route::prefix('/profil')->group(function () {
         Route::get('/lihat', [SalesController::class, 'index'])
             ->name('sales.profile.index');
