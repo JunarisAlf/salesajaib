@@ -17,8 +17,8 @@
                                         aria-labelledby="overview">
                                         @include('marketer.layout.overview')
                                         <div class="row">
-                                            {{-- @include('marketer.layout.line-chart') --}}
-                                            {{-- @include('marketer.layout.status-summary') --}}
+                                            @include('marketer.layout.line-chart')
+                                            @include('marketer.layout.status-summary')
                                         </div>
 
                                         <div class="row">
