@@ -13,7 +13,7 @@
                                 <img class="tw-block tw-w-[200px] tw-mx-auto" src={{asset("images/logo.png")}} alt="logo">
                             </div>
                             <h4 class="tw-text-xl tw-font-bold">Lupa password</h4>
-                            <h6 class="fw-light tw-text-slate-500 my-2">Email akun anda!</h6>
+                            <h6 class="fw-light tw-text-slate-500 my-2">Masukan Email akun anda!</h6>
                             <form class="pt-3" method="post" action={{route('sales.forgotPw')}}>
                                 @csrf
                                 <div class="form-group">

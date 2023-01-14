@@ -121,7 +121,8 @@ Route::prefix('sales')->middleware(['auth.sales', 'is_verified'])->group(functio
         Route::post('/forgot-password', [SalesAuthController::class, 'forgot'])->name('sales.forgotPw');
         Route::get('/forgot-password/verify', [SalesAuthController::class, 'forgotPwVerifyView'])->name('sales.forgotPwVerifyView');
         Route::post('/forgot-password/verify', [SalesAuthController::class, 'forgotVerify'])->name('sales.forgotPwVerify');
-
+        // sendOTP
+        Route::get('/otp/send', [SalesAuthController::class, 'sendOTP'])->name('sales.sendOTP');
 
     });
     Route::withoutMiddleware('is_verified')->group(function(){

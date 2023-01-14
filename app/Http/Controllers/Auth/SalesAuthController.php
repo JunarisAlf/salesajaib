@@ -62,6 +62,7 @@ class SalesAuthController extends Controller
         $user->no_wa = $request->input('noWa');
         $user->email = $request->input('email');
         $user->save();
+        Mail::to($user->email)->queue(new OtpMail(['otp' => $user->otp]));
         return redirect()->route('sales.verifyView')->with('success', 'Nomor Whatsapp dan Emal berhasil di ubah');
 
     }
@@ -103,6 +104,19 @@ class SalesAuthController extends Controller
             return redirect()->route('sales.forgotPwVerifyView', ['identifier' => $request->input('identifier')]);
         }
         return back()->withInput()->with('error', 'No WA atau Email tidak terdaftar');
+    }
+    public function sendOTP(Request $request){
+        $request->validate([
+            'identifier' => 'required|email'
+        ]);
+        $user = DB::table('users')
+            ->where('email', '=', $request->input('identifier'))
+            ->orWhere('no_wa', '=', $request->input('identifier'))
+            ->first();
+        $otp = $user->otp;
+        Mail::to($request->input('identifier'))->queue(new OtpMail(['otp' => $otp]));
+        return back()->withInput()->with('success', 'Kode OTP telah dikirim ulang');
+
     }
 
     public function forgotPwVerifyView(Request $request){

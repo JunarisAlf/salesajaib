@@ -45,7 +45,7 @@
                                 <div class="d-flex justify-content-between align-items-center my-2">
                                     <div class="form-check">
                                     </div>
-                                    <a href="#" class=" tw-text-blue-600 tw-text-base"> Kirim ulang kode OTP</a>
+                                    <a href="{{route('sales.sendOTP', ['identifier' => $email])}}" class=" tw-text-blue-600 tw-text-base"> Kirim ulang kode OTP</a>
                                 </div>
                                 <div class="mb-2">
                                 </div>
