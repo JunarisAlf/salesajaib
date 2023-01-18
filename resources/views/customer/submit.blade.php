@@ -13,7 +13,7 @@
                                 <img class="tw-block tw-w-[200px] tw-mx-auto" src={{asset("images/logo.png")}} alt="logo">
                             </div>
                             <h4 class="tw-text-xl tw-font-bold">Hi!</h4>
-                            <h6 class="fw-light tw-text-slate-500 my-2">Isi data diri terlebih dahulu untuk melanjutkan</h6>
+                            <h6 class="fw-light tw-text-slate-500 my-2">Isi data diri terlebih dahulu, kemudian anda akan diteruskan ke Whatsapp Admin kami </h6>
                             <form class="pt-3" method="post" action={{route('customer.submit', ['prop' => $prop_id])}}>
                                 @csrf
                                 <div class="form-group">
@@ -29,10 +29,10 @@
                                     value={{ old('full_name') }}>
                                 </div>
 
-                                <div class="mt-3">
+                                <div class="mt-3 form-group">
                                     <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
-                                        Lanjutkan
+                                        class=" tw-w-full btn btn-block tw-bg-[#25D366] tw-text-white btn-lg font-weight-medium auth-form-btn">
+                                        Submit dan Chat Admin
                                     </button>
                                 </div>
                                 
