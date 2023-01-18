@@ -55,10 +55,16 @@ class HistoryController extends Controller{
     }
     
     public function submitHistories(){
-        $histories = History::where('user_id', Auth::user()->id)
+        $user = Auth::user();
+        if($user->role == 'sales'){
+            $histories = History::where('user_id', $user->id )
                 ->where('type', 'submit')
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
-        return view('marketer.lihat-history-submit', ['histories' => $histories]);
+            return view('marketer.lihat-history-submit', ['histories' => $histories]);
+        }
+        $histories = History::where('type', 'submit')->orderBy('created_at', 'desc')
+                            ->paginate(10);
+        return view('admin.penjualan.lihat-history-submit', ['histories' => $histories]);
     }
 }

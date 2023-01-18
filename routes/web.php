@@ -84,6 +84,8 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.checkAff');
     });
     Route::prefix('/penjualan')->group(function () {
+        Route::get('riwayat-submit', [HistoryController::class, 'submitHistories'])
+            ->name('admin.showSubmitHistories');
         Route::get('/tambah-data-penjualan', [TransactionController::class, 'create'])
             ->name('admin.createTransaction');
         // Route::post('/tambah-data-penjualan-validation', [TransactionController::class, 'storeValidation'])->name('admin.storeTrxValidation');

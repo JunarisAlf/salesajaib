@@ -3,9 +3,9 @@
 
 @section('body')
     <div class="container-scroller">
-        @include('marketer.layout.navbar')
+        @include('admin.layout.navbar')
         <div class="container-fluid page-body-wrapper">
-            @include('marketer.layout.sidebar')
+            @include('admin.layout.sidebar')
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">

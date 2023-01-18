@@ -48,6 +48,7 @@
             </a>
             <div class="collapse" id="penjualan">
                 <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href={{route('admin.showSubmitHistories')}}>Lihat riwayat submit</a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('admin.createTransaction')}} target="_blank">Tambah data penjualan</a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('admin.showAllTransaction')}}>Lihat riwayat penjualan</a></li>
                 </ul>
