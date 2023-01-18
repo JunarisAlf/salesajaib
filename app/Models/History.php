@@ -13,4 +13,7 @@ class History extends Model
     public function sales(){
         return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
     }
+    public function property(){
+        return $this->belongsTo(Property::class, 'property_id', 'id')->withDefault();
+    }
 }

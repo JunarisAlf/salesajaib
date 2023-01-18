@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\Property;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -50,5 +52,13 @@ class HistoryController extends Controller{
             'type' => 'submit'
         ]);
         return redirect()->away('https://wa.me/6281273858690');
+    }
+    
+    public function submitHistories(){
+        $histories = History::where('user_id', Auth::user()->id)
+                ->where('type', 'submit')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+        return view('marketer.lihat-history-submit', ['histories' => $histories]);
     }
 }

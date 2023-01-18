@@ -30,6 +30,7 @@
             </a>
             <div class="collapse" id="penjualan">
                 <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.showSubmitHistories')}}>Lihat Riwayat Submit</a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('sales.showAllTransaction')}}>Lihat Riwayat Penjualan</a></li>
                 </ul>
             </div>
