@@ -9,6 +9,8 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReportPdfController;
+
 use App\Models\User;
 
 /*
@@ -78,6 +80,9 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     Route::prefix('/marketing')->group(function () {
         Route::get('/list-marketing', [SalesController::class, 'showAll'])
             ->name('admin.showAllSales');
+        Route::get('/list-marketing/cetak', [ReportPdfController::class, 'salesReport'])
+            ->name('admin.salesReport');
+              
         Route::get('/cek-affiliate', [SalesController::class, 'checkAffView'])
             ->name('admin.checkAffView');
         Route::post('/cek-affiliate', [SalesController::class, 'checkAff'])
