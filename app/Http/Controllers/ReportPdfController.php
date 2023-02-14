@@ -16,6 +16,8 @@ class ReportPdfController extends Controller {
         $periode = $req->periode;
         $st_date = '';
         $end_date = '';
+        $sales = [];
+        $count = [];
         if ($periode == 'day'){
             $st_date = Carbon::now()->startOfDay()->format('Y-m-d H:i:s');
             $end_date = Carbon::now()->endOfDay()->format('Y-m-d H:i:s');
@@ -26,6 +28,23 @@ class ReportPdfController extends Controller {
         else if($periode == 'month'){
             $st_date = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
             $end_date = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+        }else if($periode == 'all'){
+            $st_date = Carbon::now()->startOfCentury()->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->endOfDay()->format('Y-m-d H:i:s');
+            $sales = User::with('histories')
+                ->withCount('histories')
+                ->where('role', 'sales')
+                ->orderBy('histories_count', 'desc')
+                ->get();
+            $count = [
+                'click' =>  History::where('type', 'click')->count(),
+                'submit' =>  History::where('type', 'submit')->count(),
+                'property' => Property::all()->count(),
+                'sold' => Transaction::count(),
+                'sales' => User::where('role', 'sales')->count(),
+            ];
+            return view('pdf.salesReport', ['sales' => $sales, 'count' =>  $count, 'st_date' =>$st_date, 'end_date' => $end_date]);
+
         }
 
         $sales = User::with('histories')
@@ -37,10 +56,10 @@ class ReportPdfController extends Controller {
                 ->get();
 
         $count = [
-            'click' =>  History::where('type', 'click')->count(),
-            'submit' =>  History::where('type', 'submit')->count(),
+            'click' =>  History::where('type', 'click')->whereBetween('created_at', [$st_date, $end_date])->count(),
+            'submit' =>  History::where('type', 'submit')->whereBetween('created_at', [$st_date, $end_date])->count(),
             'property' => Property::all()->count(),
-            'sold' => Transaction::count(),
+            'sold' => Transaction::count()->whereBetween('created_at', [$st_date, $end_date]),
             'sales' => User::where('role', 'sales')->count(),
         ];
         // $pdf = Pdf::loadView('pdf.salesReport', ['sales' => $sales, 'count' =>  $count]);

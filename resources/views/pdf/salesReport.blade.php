@@ -6,7 +6,11 @@
     <div class="card-body">
         <h4 class="card-title">LAPORAN SALES</h4>
         <p class="card-description">
-            {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $st_date)->format('d/m/Y')}} sd. {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $end_date)->format('d/m/Y')}}
+            @if (request('periode') == 'all')
+                {{\Carbon\Carbon::now()->format('d/m/Y')}}
+            @else
+                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $st_date)->format('d/m/Y')}} sd. {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $end_date)->format('d/m/Y')}}
+            @endif
         </p>
         <div class="table-responsive pt-3 mb-4">
             <table class="table table-bordered">

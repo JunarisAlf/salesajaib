@@ -17,7 +17,7 @@
                                         <a href="{{route('admin.salesReport', ['periode' => 'day'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Harian </a>
                                         <a href="{{route('admin.salesReport', ['periode' => 'week'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Mingguan </a>
                                         <a href="{{route('admin.salesReport', ['periode' => 'month'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Bulanan </a>
-
+                                        <a href="{{route('admin.salesReport', ['periode' => 'all'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Keseluruhan </a>
                                     </div>
                                     <h4 class="card-title">List Tim Marketing</h4>
                                     <div class="table-responsive">
