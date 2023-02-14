@@ -8,11 +8,31 @@ use App\Models\History;
 use App\Models\Property;
 use App\Models\Transaction;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class ReportPdfController extends Controller {
-    public function salesReport(){
+    public function salesReport(Request $req){
+        $periode = $req->periode;
+        $st_date = '';
+        $end_date = '';
+        if ($periode == 'day'){
+            $st_date = Carbon::now()->startOfDay()->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->endOfDay()->format('Y-m-d H:i:s');
+        }else if($periode == 'week'){
+            $st_date = Carbon::now()->startOfWeek()->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
+        }
+        else if($periode == 'month'){
+            $st_date = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+        }
+
         $sales = User::with('histories')
-            ->withCount('histories')->where('role', 'sales')->orderBy('histories_count', 'desc')->get();
+                ->withCount('histories')
+                ->where('role', 'sales')
+                ->orderBy('histories_count', 'desc')
+                ->get();
+
         $count = [
             'click' =>  History::where('type', 'click')->count(),
             'submit' =>  History::where('type', 'submit')->count(),
@@ -22,7 +42,8 @@ class ReportPdfController extends Controller {
         ];
         // $pdf = Pdf::loadView('pdf.salesReport', ['sales' => $sales, 'count' =>  $count]);
         // return $pdf->download('salesReport.pdf');
-        return view('pdf.salesReport', ['sales' => $sales, 'count' =>  $count]);
-        
+        return view('pdf.salesReport', ['sales' => $sales, 'count' =>  $count, 'st_date' =>$st_date, 'end_date' => $end_date]);
     }
+
+    
 }

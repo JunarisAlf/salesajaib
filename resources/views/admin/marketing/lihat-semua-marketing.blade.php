@@ -13,10 +13,13 @@
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="my-3">
+                                        <a href="{{route('admin.salesReport', ['periode' => 'day'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Harian </a>
+                                        <a href="{{route('admin.salesReport', ['periode' => 'week'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Mingguan </a>
+                                        <a href="{{route('admin.salesReport', ['periode' => 'month'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Bulanan </a>
+
+                                    </div>
                                     <h4 class="card-title">List Tim Marketing</h4>
-                                    {{-- <p class="card-description">
-                                        Add class <code>.table-striped</code>
-                                    </p> --}}
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>

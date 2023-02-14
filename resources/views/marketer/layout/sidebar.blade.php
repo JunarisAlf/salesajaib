@@ -25,11 +25,12 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#penjualan" aria-expanded="false"
                 aria-controls="penjualan">
                 <i class="menu-icon mdi mdi-home"></i>
-                <span class="menu-title">Penjualan</span>
+                <span class="menu-title">Riwayat</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="penjualan">
                 <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href={{route('sales.showClickHistories')}}>Lihat Riwayat Klik</a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('sales.showSubmitHistories')}}>Lihat Riwayat Submit</a></li>
                     <li class="nav-item"> <a class="nav-link" href={{route('sales.showAllTransaction')}}>Lihat Riwayat Penjualan</a></li>
                 </ul>

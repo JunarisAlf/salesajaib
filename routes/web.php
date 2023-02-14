@@ -89,6 +89,8 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
             ->name('admin.checkAff');
     });
     Route::prefix('/penjualan')->group(function () {
+        // Route::get('riwayat-klik', [HistoryController::class, 'ClickHistories'])
+        //     ->name('admin.showClickHistories');
         Route::get('riwayat-submit', [HistoryController::class, 'submitHistories'])
             ->name('admin.showSubmitHistories');
         Route::get('/tambah-data-penjualan', [TransactionController::class, 'create'])
@@ -143,10 +145,16 @@ Route::prefix('sales')->middleware(['auth.sales', 'is_verified'])->group(functio
     Route::get('/dashboard', [HomeController::class, 'salesHome'])->name('sales.dashboard');
     Route::get('properti/list-properti', [PropertyController::class, 'indexSales'])
         ->name('sales.showAllProperty');
-    Route::get('penjualan/riwayat-submit', [HistoryController::class, 'submitHistories'])
-        ->name('sales.showSubmitHistories');    
-    Route::get('penjualan/riwayat-penjualan', [TransactionController::class, 'showForSales'])
-        ->name('sales.showAllTransaction');
+    
+        Route::prefix('/riwayat')->group(function(){
+        Route::get('/riwayat-klik', [HistoryController::class, 'clickHistories'])
+            ->name('sales.showClickHistories'); 
+        Route::get('/riwayat-submit', [HistoryController::class, 'submitHistories'])
+            ->name('sales.showSubmitHistories');    
+        Route::get('/riwayat-penjualan', [TransactionController::class, 'showForSales'])
+            ->name('sales.showAllTransaction');
+    });
+   
     Route::prefix('/profil')->group(function () {
         Route::get('/lihat', [SalesController::class, 'index'])
             ->name('sales.profile.index');

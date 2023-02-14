@@ -8,11 +8,11 @@
                 
             </div>
             <div>
-                <p class="statistics-title">Klik Halaman</p>
+                <p class="statistics-title">Klik (Minggu Ini)</p>
                 <h3 class="rate-percentage">{{$count['click']}}</h3>
             </div>
             <div>
-                <p class="statistics-title">Submit</p>
+                <p class="statistics-title">Submit (Minggu Ini)</p>
                 <h3 class="rate-percentage">{{$count['submit']}}</h3>
             </div>
             <div class="d-none d-md-block">

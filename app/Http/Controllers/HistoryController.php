@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\Property;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -55,6 +56,8 @@ class HistoryController extends Controller{
     }
     
     public function submitHistories(){
+        
+
         $user = Auth::user();
         if($user->role == 'sales'){
             $histories = History::where('user_id', $user->id )
@@ -66,5 +69,18 @@ class HistoryController extends Controller{
         $histories = History::where('type', 'submit')->orderBy('created_at', 'desc')
                             ->paginate(10);
         return view('admin.penjualan.lihat-history-submit', ['histories' => $histories]);
+    }
+
+    public function ClickHistories(){
+        $user = Auth::user();
+        $histories = History::orderBy('created_at')
+                            ->get()
+                            ->groupBy(function ($val) {
+                                return Carbon::parse($val->created_at)->format('W');
+                            });
+                            // dd($histories);
+        
+                            return view('marketer.lihat-history-click', compact('histories'));
+
     }
 }

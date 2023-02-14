@@ -6,7 +6,7 @@
     <div class="card-body">
         <h4 class="card-title">LAPORAN SALES</h4>
         <p class="card-description">
-            {{date("d/m/Y")}}
+            {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $st_date)->format('d/m/Y')}} sd. {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $end_date)->format('d/m/Y')}}
         </p>
         <div class="table-responsive pt-3 mb-4">
             <table class="table table-bordered">
@@ -28,9 +28,9 @@
                             <td>{{ $s->full_name }}</td>
                             <td>{{ $s->no_wa }}</td>
                             <td>{{ $s->email }}</td>
-                            <td>{{ $s->histories->where('type', 'click')->count() }}</td>
+                            <td>{{ $s->histories->where('type', 'click')->whereBetween('created_at', [$st_date, $end_date])->count() }}</td>
                             <td>
-                                {{$s->histories->where('type', 'submit')->count()}}
+                                {{$s->histories->where('type', 'submit')->whereBetween('created_at', [$st_date, $end_date])->count()}}
                             </td>
                             <td>
                                 {{$s->transactions->count()}}

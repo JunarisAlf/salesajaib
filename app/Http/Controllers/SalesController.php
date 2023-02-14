@@ -12,7 +12,7 @@ use Illuminate\Validation\Rule;
 class SalesController extends Controller
 {
     public function showAll(){
-        $sales = User::where('role', 'sales')->orderBy('created_at', 'desc')->paginate(10);
+        $sales = User::where('role', 'sales')->orderBy('created_at', 'desc')->paginate(50);
         return view('admin.marketing.lihat-semua-marketing', ['sales' => $sales]);
     }
     public function checkAffView(){
