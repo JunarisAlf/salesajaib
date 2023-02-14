@@ -59,7 +59,7 @@ class ReportPdfController extends Controller {
             'click' =>  History::where('type', 'click')->whereBetween('created_at', [$st_date, $end_date])->count(),
             'submit' =>  History::where('type', 'submit')->whereBetween('created_at', [$st_date, $end_date])->count(),
             'property' => Property::all()->count(),
-            'sold' => Transaction::count()->whereBetween('created_at', [$st_date, $end_date]),
+            'sold' => Transaction::whereBetween('created_at', [$st_date, $end_date])->count(),
             'sales' => User::where('role', 'sales')->count(),
         ];
         // $pdf = Pdf::loadView('pdf.salesReport', ['sales' => $sales, 'count' =>  $count]);
