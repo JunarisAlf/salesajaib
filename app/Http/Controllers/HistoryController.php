@@ -74,6 +74,7 @@ class HistoryController extends Controller{
     public function ClickHistories(){
         $user = Auth::user();
         $histories = History::orderBy('created_at')
+                            ->where('user_id', $user->id)
                             ->get()
                             ->groupBy(function ($val) {
                                 return Carbon::parse($val->created_at)->format('W');
