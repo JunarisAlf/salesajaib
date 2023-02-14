@@ -9,6 +9,7 @@ use App\Models\Property;
 use App\Models\Transaction;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class ReportPdfController extends Controller {
     public function salesReport(Request $req){
@@ -28,7 +29,9 @@ class ReportPdfController extends Controller {
         }
 
         $sales = User::with('histories')
-                ->withCount('histories')
+                ->withCount(['histories' => function(Builder $query) use($st_date, $end_date){
+                    $query->whereBetween('created_at', [$st_date, $end_date]);
+                }])
                 ->where('role', 'sales')
                 ->orderBy('histories_count', 'desc')
                 ->get();
