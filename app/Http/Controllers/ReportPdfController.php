@@ -28,6 +28,9 @@ class ReportPdfController extends Controller {
         else if($periode == 'month'){
             $st_date = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
             $end_date = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+        }else if($periode == 'range'){
+            $st_date = Carbon::createFromDate($req->date_start)->setTime(00, 00, 0)->format('Y-m-d H:i:s');
+            $end_date = Carbon::createFromDate($req->end)->setTime(23, 59, 59)->format('Y-m-d H:i:s');
         }else if($periode == 'all'){
             $st_date = Carbon::now()->startOfCentury()->format('Y-m-d H:i:s');
             $end_date = Carbon::now()->endOfDay()->format('Y-m-d H:i:s');
@@ -44,9 +47,7 @@ class ReportPdfController extends Controller {
                 'sales' => User::where('role', 'sales')->count(),
             ];
             return view('pdf.salesReport', ['sales' => $sales, 'count' =>  $count, 'st_date' =>$st_date, 'end_date' => $end_date]);
-
         }
-
         $sales = User::with('histories')
                 ->withCount(['histories' => function(Builder $query) use($st_date, $end_date){
                     $query->whereBetween('created_at', [$st_date, $end_date]);

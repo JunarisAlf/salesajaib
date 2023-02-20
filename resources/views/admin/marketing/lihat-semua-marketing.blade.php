@@ -19,6 +19,26 @@
                                         <a href="{{route('admin.salesReport', ['periode' => 'month'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Bulanan </a>
                                         <a href="{{route('admin.salesReport', ['periode' => 'all'])}}" target="_blank" class="my-2 btn btn-primary btn-sm"> Laporan Keseluruhan </a>
                                     </div>
+                                    <form class="my-4" method="get" action="{{route('admin.salesReport')}}">
+                                        @csrf
+                                        <input type="hidden" name="periode" value="range">
+                                        <div class="input-group flex-nowrap my-1">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text" id="addon-wrapping">Awal</span>
+                                            </div>
+                                            <input type="date" class="form-control" name="date_start" placeholder="Tanggal Awal" aria-label="Tanggal Awal" aria-describedby="addon-wrapping">
+                                        </div>
+                                        <div class="input-group flex-nowrap">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text" id="addon-wrapping">Akhir</span>
+                                            </div>
+                                            <input type="date" class="form-control" name="date_end" placeholder="Tanggal Akhir" aria-label="Tanggal Akhir" aria-describedby="addon-wrapping">
+                                        </div>
+                                        
+                                        <button type="submit" class="my-2 btn btn-primary">SUBMIT</button>
+
+                                    </form>
+
                                     <h4 class="card-title">List Tim Marketing</h4>
                                     <div class="table-responsive">
                                         <table class="table table-striped">
