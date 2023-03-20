@@ -52,7 +52,7 @@ class HistoryController extends Controller{
             'user_id' => $request->cookie('sales_id'),
             'type' => 'submit'
         ]);
-        return redirect()->away('https://wa.me/6281273858690');
+        return redirect()->away('https://wa.me/6281365328534');
     }
     
     public function submitHistories(){
